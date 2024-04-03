@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccnbnxynamaag"]
+
+[ext_resource type="PackedScene" uid="uid://dkp71oy0227b6" path="res://fase01/scenes/player_2d.tscn" id="1_50e17"]
+[ext_resource type="PackedScene" uid="uid://cxjg8w1ordj3" path="res://fase01/scenes/inimigo_2d.tscn" id="2_6s48w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dqbl"]
+size = Vector2(1156, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfi6e"]
+size = Vector2(305.313, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uawbx"]
+
+[node name="fase1" type="Node2D"]
+
+[node name="chao" type="StaticBody2D" parent="."]
+
+[node name="shape" type="CollisionShape2D" parent="chao"]
+position = Vector2(581, 616)
+shape = SubResource("RectangleShape2D_5dqbl")
+debug_color = Color(0.764706, 0.431373, 0.337255, 0.419608)
+
+[node name="plat1" type="CollisionShape2D" parent="chao"]
+position = Vector2(978, 457)
+shape = SubResource("RectangleShape2D_dfi6e")
+debug_color = Color(0.764706, 0.431373, 0.337255, 0.419608)
+
+[node name="plat2" type="CollisionShape2D" parent="chao"]
+position = Vector2(178, 228)
+shape = SubResource("RectangleShape2D_dfi6e")
+debug_color = Color(0.764706, 0.431373, 0.337255, 0.419608)
+
+[node name="plat3" type="CollisionShape2D" parent="chao"]
+position = Vector2(497, 415)
+shape = SubResource("RectangleShape2D_dfi6e")
+debug_color = Color(0.764706, 0.431373, 0.337255, 0.419608)
+
+[node name="player2d" parent="." instance=ExtResource("1_50e17")]
+position = Vector2(772, 539)
+
+[node name="inimigo2d" parent="." instance=ExtResource("2_6s48w")]
+position = Vector2(879, 569)
+
+[node name="caixa" type="CharacterBody2D" parent="."]
+
+[node name="shape2d" type="CollisionShape2D" parent="caixa"]
+position = Vector2(119, 536)
+scale = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_uawbx")
+debug_color = Color(0.294118, 0.627451, 0.00392157, 0.419608)
