@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccnbnxynamaag"]
+[gd_scene load_steps=8 format=3 uid="uid://ccnbnxynamaag"]
 
 [ext_resource type="PackedScene" uid="uid://dkp71oy0227b6" path="res://fase01/scenes/player_2d.tscn" id="1_50e17"]
 [ext_resource type="PackedScene" uid="uid://cxjg8w1ordj3" path="res://fase01/scenes/inimigo_2d.tscn" id="2_6s48w"]
+[ext_resource type="Script" path="res://fase01/scrípts/caixa.gd" id="3_fkede"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dqbl"]
 size = Vector2(1156, 54)
@@ -10,6 +11,10 @@ size = Vector2(1156, 54)
 size = Vector2(305.313, 39)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uawbx"]
+size = Vector2(24, 22.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wl1f"]
+size = Vector2(33.25, 23.25)
 
 [node name="fase1" type="Node2D"]
 
@@ -42,9 +47,21 @@ position = Vector2(772, 539)
 position = Vector2(879, 569)
 
 [node name="caixa" type="CharacterBody2D" parent="."]
+script = ExtResource("3_fkede")
 
 [node name="shape2d" type="CollisionShape2D" parent="caixa"]
-position = Vector2(119, 536)
+position = Vector2(141, 376)
 scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_uawbx")
 debug_color = Color(0.294118, 0.627451, 0.00392157, 0.419608)
+
+[node name="area_contato" type="Area2D" parent="caixa"]
+
+[node name="shape" type="CollisionShape2D" parent="caixa/area_contato"]
+position = Vector2(141.5, 376)
+scale = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_8wl1f")
+debug_color = Color(0.756863, 0.454902, 0.0509804, 0.419608)
+
+[connection signal="body_entered" from="caixa/area_contato" to="caixa" method="_on_area_contato_body_entered"]
+[connection signal="body_exited" from="caixa/area_contato" to="caixa" method="_on_area_contato_body_exited"]
